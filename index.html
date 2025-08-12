@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshWave Laundry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background: #0077b6;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background: #90e0ef;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card h3 {
+            color: #0077b6;
+        }
+        form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #0077b6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #023e8a;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #0077b6;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FreshWave Laundry</h1>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Clean Clothes, Delivered to Your Doorstep</h1>
+        <p>Fast, Eco-Friendly & Convenient Laundry Service</p>
+        <a href="#booking"><button>Book Your Pickup</button></a>
+    </section>
+
+    <section id="services" class="container">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Regular Laundry</h3>
+                <p>Wash, dry, and fold with care.</p>
+                <p>30 RS./clothes</p>
+            </div>
+            <div class="card">
+                <h3>Dry Cleaning</h3>
+                <p>Professional cleaning for delicate fabrics.</p>
+                <p>80 RS./clothes</p>
+            </div>
+            <div class="card">
+                <h3>Express Service</h3>
+                <p>24-hour turnaround for urgent needs.</p>
+                <p>15 RS./clothes</p>
+            </div>
+            <div class="card">
+                <h3>Eco-Friendly Wash</h3>
+                <p>Gentle detergents for your clothes & planet.</p>
+                <p>12 RS./clothes</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="container">
+        <h2>Book a Pickup</h2>
+        <form action="book.php" method="post">
+            <input type="text"  name="name" placeholder="Full Name" required>
+            <input type="tel"  name="number" placeholder="Phone Number" required>
+            <input type="text"  name="address" placeholder="Address" required>
+            <select name="service" required>
+                <option value="">Select Service</option>
+                <option>Regular Laundry</option>
+                <option>Dry Cleaning</option>
+                <option>Express Service</option>
+                <option>Eco-Friendly Wash</option>
+            </select>
+            <input type="text" placeholder="quantity" name="quantity" required>
+            <input type="date" name="date" required>
+            <button type="submit">Submit Booking</button>
+        </form>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact Us</h2>
+        <p>📞 Phone: +91-9408236996</p>
+        <p>📍 Location: Rajkot, Gujarat</p>
+        <p>💬 WhatsApp: <a href="https://wa.me/919408236996">Chat Now</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FreshWave Laundry. All rights reserved.</p>
+    </footer>
+
+
+
+
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+        let address = document.getElementById("address").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let service = document.getElementById("service").value;
+        let date = document.getElementById("date").value;
+
+        if (name && address && phone && service && date) {
+            alert(`✅ Thank you, ${name}! Your ${service} pickup is scheduled on ${date}.`);
+            document.getElementById("bookingForm").reset();
+        } else {
+            alert("⚠️ Please fill in all fields.");
+        }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+            });
+        });
+        });
+    </script>
+</body>
+</html>
